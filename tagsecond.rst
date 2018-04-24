@@ -231,7 +231,9 @@ git checkout -b branch_name tag_name
 
 要看看是否真的从远程库删除了标签，可以登陆GitHub查看。
 
-https://blog.csdn.net/philos3/article/details/72812120
+这篇文章参考的是：`Quick reStructuredText`__。
+
+.. __:https://blog.csdn.net/philos3/article/details/72812120
 
 
 
