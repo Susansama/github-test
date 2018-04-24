@@ -11,4 +11,5 @@ Welcome to rst's documentation!
    :caption: Contents:
 
 
-   tag.rst
+   tag1.rst
+   tag2.rst
