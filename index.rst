@@ -12,4 +12,3 @@ Welcome to rst's documentation!
 
 
    tag1.rst
-   tag2.rst
