@@ -5,17 +5,17 @@ github的使用过程中tag也是不可或缺的一个命令，
 Tag
 -------
 
-	git tag
-	>>>>>>>>>>
-::
+git tag
+>>>>>>>>>>
+	::
 1 // 查看tag，列出所有tag，列出的tag是按字母排序的，和创建时间没关系。
 2 $ git tag
 3 v0.1
 4 v1.3
     
-	git tag -l
-	>>>>>>>>>>>>>
-
+git tag -l
+>>>>>>>>>>>>>>>>>>>>>>>>>>
+	::
 1 //查看指定版本的tag，git tag -l “v1.4.2.**”
 2 $ git tag -l 'v1.4.2.*'
 3 v1.4.2.1
@@ -23,9 +23,9 @@ Tag
 5 v1.4.2.3
 6 v1.4.2.4
 
-    git show
-	>>>>>>>>>>>>>>
-::
+git show
+>>>>>>>>>>>>>>
+	::
 1 //显示制定tag的信息
 2 $ git show v1.4
 3 tag v1.4
@@ -41,8 +41,8 @@ Tag
 13
 14    Merge branch 'experiment'
 
-    git tag -a tagName -m “注释”
-	>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+git tag -a tagName -m “注释”
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 1 -m 后面带的就是注释信息，一般写当前的版本作用，这种是普通tag,-a 取 annotated 的首字母也可以给commit版本添加如下:git tag -a tagName   ef0264   -m "注释"
 
@@ -89,7 +89,7 @@ Tag
 列显已有的标签
 
 列出现有标签的命令非常简单，直接运行 git tag 即可：
-::
+	::
 1 $ git tag
 2 v0.1
 3 v1.3
@@ -97,7 +97,7 @@ Tag
 显示的标签按字母顺序排列，所以标签的先后并不表示重要程度的轻重。
 
 我们可以用特定的搜索模式列出符合条件的标签。在 Git 自身项目仓库中，有着超过 240 个标签，如果你只对 1.4.2 系列的版本感兴趣，可以运行下面的命令：
-::
+	::
 1 $ git tag -l 'v1.4.2.*'
 2 v1.4.2.1
 3 v1.4.2.2
@@ -117,7 +117,7 @@ annotated：含附注标签，实际上是存储在仓库中的一个独立对�
 ----------------
 
 创建一个含附注类型的标签非常简单，用 -a （译注：取 annotated 的首字母）指定标签名字即可：
-::
+	::
 1 $ git tag -a v1.4 -m 'my version 1.4'
 2 $ git tag
 3 v0.1
@@ -126,7 +126,7 @@ annotated：含附注标签，实际上是存储在仓库中的一个独立对�
 
 而 -m 选项则指定了对应的标签说明，Git 会将此说明一同保存在标签对象中。如果没有给出该选项，Git 会启动文本编辑软件供你输入标签说明。（git 提交注释都是-m ‘XXxx’）
 可以使用 git show 命令查看相应标签的版本信息，并连同显示打标签时的提交对象。
-::
+	::
 1 $ git show v1.4
 2 tag v1.4
 3 Tagger: Scott Chacon <schacon@gee-mail.com>
@@ -147,14 +147,14 @@ annotated：含附注标签，实际上是存储在仓库中的一个独立对�
 -------------
 
 如果你有自己的私钥，还可以用 GPG 来签署标签，只需要把之前的 -a 改为 -s （译注： 取 signed 的首字母）即可：
-::
+	::
 1 $ git tag -s v1.5 -m 'my signed 1.5 tag'
 2 You need a passphrase to unlock the secret key for
 3 user: "Scott Chacon <schacon@gee-mail.com>"
 4 1024-bit DSA key, ID F721C45A, created 2009-02-09
 
 现在再运行 git show 会看到对应的 GPG 签名也附在其内：
-::
+	::
 1 $ git show v1.5
 2 tag v1.5
 3 Tagger: Scott Chacon <schacon@gee-mail.com>
@@ -179,7 +179,7 @@ annotated：含附注标签，实际上是存储在仓库中的一个独立对�
 -------------
 
 轻量级标签实际上就是一个保存着对应提交对象的校验和信息的文件。要创建这样的标签，一个 -a，-s 或 -m 选项都不用，直接给出标签名字即可：
-::
+	::
 1 $ git tag v1.4-lw
 2 $ git tag
 3 v0.1
@@ -189,7 +189,7 @@ annotated：含附注标签，实际上是存储在仓库中的一个独立对�
 7 v1.5
 
 现在运行 git show 查看此标签信息，就只有相应的提交对象摘要：
-
+	::
 1 $ git show v1.4-lw
 2 commit 15027957951b64cf874c3557a0f3547bd83b3ff6
 3 Merge: 4a447f7... a6b4c97...
@@ -202,7 +202,7 @@ annotated：含附注标签，实际上是存储在仓库中的一个独立对�
 -------------
 
 可以使用 git tag -v [tag-name] （译注：取 verify 的首字母）的方式验证已经签署的标签。此命令会调用 GPG 来验证签名，所以你需要有签署者的公钥，存放在 keyring 中，才能验证：
-::
+	::
 1 $ git tag -v v1.4.2.1
 2 object 883653babd8ee7ea23e6a5c392bb739348b1eb61
 3 type commit
@@ -218,7 +218,7 @@ annotated：含附注标签，实际上是存储在仓库中的一个独立对�
 13 Primary key fingerprint: 3565 2A26 2040 E066 C9A7  4A7D C0C6 D9A4 F311 9B9A
 
 若是没有签署者的公钥，会报告类似下面这样的错误：
-::
+	::
 1 gpg: Signature made Wed Sep 13 02:08:25 2006 PDT using DSA key ID F3119B9A
 2 gpg: Can't check signature: public key not found
 3 error: could not verify the tag 'v1.4.2.1'
@@ -227,7 +227,7 @@ annotated：含附注标签，实际上是存储在仓库中的一个独立对�
 -------------
 
 你甚至可以在后期对早先的某次提交加注标签。比如在下面展示的提交历史中：
-::
+	::
 1 $ git log --pretty=oneline
 2 15027957951b64cf874c3557a0f3547bd83b3ff6 Merge branch 'experiment'
 3 a6b4c97498bd301d84096da251c98a07c7723e65 beginning write support
@@ -244,7 +244,7 @@ annotated：含附注标签，实际上是存储在仓库中的一个独立对�
 
 $ git tag -a v1.2 9fceb02
 可以看到我们已经补上了标签：
-::
+	::
 1 $ git tag
 2 v0.1
 3 v1.2
@@ -271,7 +271,7 @@ $ git tag -a v1.2 9fceb02
 -------------
 
 默认情况下，git push 并不会把标签传送到远端服务器上，只有通过显式命令才能分享标签到远端仓库。其命令格式如同推送分支，运行 git push origin [tagname] 即可：
-::
+	::
 1 $ git push origin v1.5
 2 Counting objects: 50, done.
 3 Compressing objects: 100% (38/38), done.
@@ -281,7 +281,7 @@ $ git tag -a v1.2 9fceb02
 7 * [new tag]         v1.5 -> v1.5
 
 如果要一次推送所有本地新增的标签上去，可以使用 –tags 选项：
-::
+	::
 1 $ git push origin --tags
 2 Counting objects: 50, done.
 3 Compressing objects: 100% (38/38), done.
@@ -310,12 +310,12 @@ git checkout -b branch_name tag_name
 -------------
 
 如果标签已经推送到远程，要删除远程标签就麻烦一点，先从本地删除：
-::
+	::
 1 $ git tag -d v0.9
 2 Deleted tag 'v0.9' (was 6224937)
 
 然后，从远程删除。删除命令也是push，但是格式如下：
-::
+	::
 1 $ git push origin :refs/tags/v0.9
 2 To git@github.com:michaelliao/learngit.git
 3  - [deleted]         v0.9
